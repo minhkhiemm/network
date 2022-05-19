@@ -7,7 +7,8 @@ use std::time::Duration;
 
 fn main() {
     let remote: SocketAddr = "127.0.0.1:8888".parse().unwrap();
-    let mut stream = TcpStream::connect_timeout(&remote, Duration::from_secs(1)).expect("Could not connect to server");
+    let mut stream = TcpStream::connect_timeout(&remote, Duration::from_secs(1))
+        .expect("Could not connect to server");
     stream.set_read_timeout(Some(Duration::from_secs(6))).expect("Could not set timeout");
     
     loop {
